@@ -36,7 +36,6 @@ public class BicubicSolid extends SolidBase {
         createSurface(points, 5, 5);
     }
 
-
     private void createSurface(Point3D[] points, int m, int n) {
         bicubic.init(points, 0);
 
