@@ -32,14 +32,12 @@ public class RendererTri implements Renderer {
             Point3D p3 = vertices.get(i3);
 
             if (isTexture) {
-                // isTexture = true;
                 Point2D t1 = texels.get(i1);
                 Point2D t2 = texels.get(i2);
                 Point2D t3 = texels.get(i3);
                 renderTriangle(p1, p2, p3, t1, t2, t3, texture, mat);
 
             } else {
-                // isTexture = false;
                 Col t1 = colors.get(i1);
                 Col t2 = colors.get(i2);
                 Col t3 = colors.get(i3);

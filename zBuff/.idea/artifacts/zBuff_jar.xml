@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="zBuff:jar">
+    <output-path>$PROJECT_DIR$/../zBuff_jar</output-path>
+    <root id="archive" name="zBuff.jar">
+      <element id="module-output" name="zBuff" />
+    </root>
+  </artifact>
+</component>

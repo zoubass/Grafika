@@ -19,7 +19,6 @@ public class Pyramid extends SolidBase {
 
         vertices.add(new Point3D(0.5, 2, 0.5));
 
-        //TODO: špatný indices snad
         indices.add(0);
         indices.add(1);
         indices.add(3);

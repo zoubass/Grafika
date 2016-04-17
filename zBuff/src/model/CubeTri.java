@@ -38,7 +38,6 @@ public class CubeTri implements Solid {
         indices.add(7);
 
         for (int i = 0; i < 4; i++) {
-
             indices.add(i); // 0123
             indices.add(((i + 3) % 4) + 4);// 7456
             indices.add(i + 4); // 4567
@@ -46,7 +45,6 @@ public class CubeTri implements Solid {
             indices.add(i); // 0123
             indices.add((i + 1) % 4); // 1230
             indices.add(i + 4); // 4567
-
         }
 
         texels.add(new Point2D(texture.getWidth() - 1, 1));

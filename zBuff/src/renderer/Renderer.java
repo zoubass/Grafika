@@ -10,12 +10,11 @@ import java.util.List;
 
 public interface Renderer {
 
-	void render(List<Point3D> vertices, List<Integer> indices, List<Col> colors, List<Point2D> texels,
-			BufferedImage texture, Mat4 mat);
+    // Nice to have: Vytvořit kontextový objekt obsahující argumenty metody a ten předávat
+    void render(List<Point3D> vertices, List<Integer> indices, List<Col> colors, List<Point2D> texels,
+                BufferedImage texture, Mat4 mat);
 
-	//void render(List<Point3D> vertices, List<Integer> indices, Mat4 mat, int color);
+    void setTexture(boolean isTexture);
 
-	void setTexture(boolean isTexture);
-
-	boolean isTexture();
+    boolean isTexture();
 }

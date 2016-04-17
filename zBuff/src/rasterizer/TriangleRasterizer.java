@@ -136,17 +136,10 @@ public class TriangleRasterizer implements Rasterizer {
                 if (isTexture) {
                     int xt = (int) (texel.getX() * v.getZ() % 256);
                     int yt = (int) (texel.getY() * v.getZ() % 256);
-                    if (v.getZ() < 0) {
-                        System.out.println("Z je maly");
-                    }
-                    if (texel.getX() < 0 || texel.getY() < 0) {
-                        System.out.println("sOURADNICE texelu jsou maly");
-                    }
+
                     if (!(xt < 0 || yt < 0)) {
                         img.setRGB(x, y, texture.getRGB(xt,
                                 yt));
-                    } else {
-                        img.setRGB(x, y, 0xff000);
                     }
                 } else {
                     img.setRGB(x, y, c.getRGB());

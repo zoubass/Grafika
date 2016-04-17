@@ -48,7 +48,7 @@ public class Canvas2 {
 
         pyramid = new Pyramid(ImageIO.read(new File("metal.png")));
         cube = new CubeTri(new Cube(), ImageIO.read(new File("sachovnice.gif")));
-        bicubic = new BicubicSolid(ImageIO.read(new File("sachovnice.gif")));
+        bicubic = new BicubicSolid(ImageIO.read(new File("metal.png")));
         frame.add(panel);
         frame.pack();
         frame.setVisible(true);
@@ -71,6 +71,9 @@ public class Canvas2 {
         gr.setColor(new Color(color));
         gr.fillRect(0, 0, img.getWidth(), img.getHeight());
         gr.setColor(new Color(0xffffff));
+        gr.drawString("[t] - Nepovedený pokus o texturu :)", 10, 20);
+        gr.drawString("Pohyb: W, A, S, D)", 10, 40);
+        gr.drawString("Lukáš Zoubek", 10, 60);
     }
 
     public void present() {
@@ -80,21 +83,20 @@ public class Canvas2 {
 
     public void draw() {
         clear(0x000000);
-
-
         triaRenderer.setTexture(triaRenderer.isTexture());
 
         // clearing zBuff
         triaRasterizer.clear();
-//        triaRenderer.render(cube.getVertices(), cube.getIndices(), cube.getColors(), cube.getTexels(),
-//                cube.getTextureImg(), new Mat4Transl(10, 0, 0).mul(camera.getViewMatrix()).mul(persp));
 
-//        triaRenderer.render(pyramid.getVertices(), pyramid.getIndices(), pyramid.getColors(), pyramid.getTexels(),
-//                pyramid.getTextureImg(), new Mat4Transl(10, -1.5, 0).mul(camera.getViewMatrix()).mul(persp));
-
-        //Mat4 deform = new Mat4(new Point3D(10, 20, 0, 0), new Point3D(-20, 10, 0, 0), new Point3D(0, 0, 2, 0), new Point3D(0, 0, 0, 1));
+        // Pyramid
+        triaRenderer.render(cube.getVertices(), cube.getIndices(), cube.getColors(), cube.getTexels(),
+                cube.getTextureImg(), new Mat4Transl(10, 0, 0).mul(camera.getViewMatrix()).mul(persp));
+        // Cube
+        triaRenderer.render(pyramid.getVertices(), pyramid.getIndices(), pyramid.getColors(), pyramid.getTexels(),
+                pyramid.getTextureImg(), new Mat4Transl(10, -1.5, 0).mul(camera.getViewMatrix()).mul(persp));
+        //Bicubic plate
         triaRenderer.render(bicubic.getVertices(), bicubic.getIndices(), bicubic.getColors(), bicubic.getTexels(),
-                bicubic.getTextureImg(), new Mat4Transl(10, -1.5, 0).mul(camera.getViewMatrix()).mul(persp));
+                bicubic.getTextureImg(), new Mat4Transl(10, -3, -1).mul(new Mat4RotX(1).mul(camera.getViewMatrix()).mul(persp)));
 
     }
 
@@ -161,7 +163,7 @@ public class Canvas2 {
                     case KeyEvent.VK_T:
                         triaRenderer.setTexture(!triaRenderer.isTexture());
                         break;
-                    default: // TODO: ?
+                    default: // TODO: handle default
                         break;
                 }
                 start();
